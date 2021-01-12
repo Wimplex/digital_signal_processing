@@ -76,7 +76,7 @@ def mfcc(n_mfcc, signal, sample_rate, win_len, win_step, window_function, use_dc
                'kaiser': partial(np.kaiser, beta=3), 'blackman': np.blackman}
     frames = frames * w_funcs[window_function](win_len + 1)[:-1]
 
-    # Compute power spectrum (peridogram)
+    # Compute power spectrum (periodogram)
     frames = frames.T
     spectrum = fft(frames, axis=0, workers=8)[:int(win_len / 2)]
     spectrum = np.flip(spectrum, axis=0)
